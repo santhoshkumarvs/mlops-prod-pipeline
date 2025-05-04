@@ -1,6 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+      - name: demo
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: mlops-app
   labels:
     app: mlops-app
